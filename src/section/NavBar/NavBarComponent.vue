@@ -20,24 +20,28 @@
 </template>
   
 <script setup lang='ts'>
-import ImgLogo from '../../components/icons/ImgLogo.vue';
-import ImgUsers from '@/components/icons/ImgUsers.vue';
-import OptionNav from '../../components/OptionNav/OptionNavComponent.vue';
-import Button from '../../components/Button/ButtonComponent.vue'
-import ImgJob from '@/components/icons/ImgJob.vue';
-import { useAuthStore } from '@/stores/auth'
-import router from '@/router';
+  import ImgLogo from '../../components/icons/ImgLogo.vue';
+  import ImgUsers from '@/components/icons/ImgUsers.vue';
+  import OptionNav from '../../components/OptionNav/OptionNavComponent.vue';
+  import Button from '../../components/Button/ButtonComponent.vue'
+  import ImgJob from '@/components/icons/ImgJob.vue';
+  import { useAuthStore } from '@/stores/auth'
+  import { useListEmployeStore } from '@/stores/listEmploye'
+  import router from '@/router';
 
-const store = useAuthStore()
+  const store = useAuthStore()
+  const employeStore = useListEmployeStore()
 
-const removeAuth = () => {
-  store.userAuth = {}
-  router.push('/')
-}
+  const removeAuth = () => {
+    store.userAuth = {}
+    router.push('/')
+  }
 
-const redirect = (path: string) => {
-  router.push(path)
-}
+  const redirect = (path: string) => {
+    if (!employeStore.loadingList) {
+      router.push(path)
+    }
+  }
 
 </script>
   

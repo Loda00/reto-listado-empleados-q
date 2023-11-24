@@ -42,15 +42,11 @@
 </template>
   
 <script setup lang='ts'>
-import { Fragment, onMounted } from 'vue';
-import ImgEye from '../icons/ImgEye.vue';
-import ImgEdit from '../icons/ImgEdit.vue';
-import ImgDelete from '../icons/ImgDelete.vue';
+  import ImgEye from '../icons/ImgEye.vue';
+  import ImgEdit from '../icons/ImgEdit.vue';
+  import ImgDelete from '../icons/ImgDelete.vue';
 
-const props = defineProps(['headers', 'body'])
-
-
-// onMounted(() => console.log('props ', props.headers))
+  const props = defineProps(['headers', 'body'])
 
 </script>
   

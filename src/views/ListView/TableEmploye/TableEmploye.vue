@@ -75,7 +75,7 @@ import Skeleton from '@/components/Skeleton/SkeletonComponent.vue'
 import ImgPlus from '@/components/icons/ImgPlus.vue';
 import { useListEmployeStore } from '@/stores/listEmploye'
 import { storeToRefs } from 'pinia';
-import { computed, onMounted, onUpdated, ref, watch, watchEffect } from 'vue';
+import { computed, onMounted, onUpdated, ref, watch } from 'vue';
 
 interface ITableHeaders {
   name: string;
@@ -93,7 +93,7 @@ const headers: ITableHeaders[] = [
 
 const store = useListEmployeStore()
 
-const { employeList, errorList, loadingList } = storeToRefs(store)
+const { employeList, loadingList } = storeToRefs(store)
 
 const page = ref<number>(1)
 const limit = ref<number>(10)
@@ -102,7 +102,6 @@ const text = ref<string>('')
 const arrayLimit = [7, 10, 15]
 
 const setLimit = (value: number) => {
-  console.log('value ', value);
   limit.value = value
 }
 
@@ -126,7 +125,7 @@ const selectPage = (select: number) => {
   page.value = select
 }
 
-watchEffect(() => {
+watch([employeList, limit, buttonsPage], () => {
   const calc = String((employeList.value.total || 0) / limit.value)
   buttonsPage.value = parseInt(calc) + 1
 })

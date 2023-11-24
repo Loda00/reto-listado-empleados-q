@@ -17,7 +17,6 @@
   import HeaderComponent from '@/section/Header/HeaderComponent.vue';
   import NavBarComponent from '@/section/NavBar/NavBarComponent.vue';
 
-  console.log('List Employes');
 </script>
   
 <style>
